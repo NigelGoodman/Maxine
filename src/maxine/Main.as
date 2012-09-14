@@ -34,6 +34,7 @@ package maxine
 		private const off:int = 0;
 		private const example:int = 1;
 		private const input:int = 2;
+		private const wait:int = 3;
 		
 		public function Main():void 
 		{
@@ -171,6 +172,12 @@ package maxine
 						blankAllButtons();
 						break;
 					}
+					case wait:
+					{
+						
+						mode = example;
+						break;
+					}
 					default:
 					{
 						break;
@@ -203,10 +210,14 @@ package maxine
 		
 		private function clickedNote(event:Event):void
 		{		
+			if (mode == input)
+			{
+				playSound(noteButtons.indexOf(event.currentTarget));
+			}
 			if (mode == input && expectedList.length >0 )
 			{
 				noteButtons[noteButtons.indexOf(event.currentTarget)].alpha = 0.7;
-				playSound(noteButtons.indexOf(event.currentTarget));
+				
 				if (expectedList[0] == noteButtons.indexOf(event.currentTarget))
 				{
 					announcer.text = "CORRECT!";
@@ -222,7 +233,7 @@ package maxine
 			if (expectedList.length <= 0)
 			{
 				patternLength = 4;
-				mode = example;
+				mode = wait;
 			}
 		}
 		
