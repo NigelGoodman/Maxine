@@ -17,6 +17,7 @@ package maxine
 	{
 		private var noteButtons:Vector.<textButton>;
 		private var noteStrings:Vector.<String>;
+		private var noteButtonStrings:Vector.<String>;
 		private var onButton:textButton;
 		private var mode:int = 0;
 		private var ticker:int = 0;
@@ -25,7 +26,7 @@ package maxine
 		private var startButton:textButton;
 		private var playRoot:Boolean = true;
 		private var expectedList:Vector.<int>;
-		public var driver:SiONDriver = new SiONDriver();
+		public var sounds:SiONDriver = new SiONDriver();
 		
 		private var announcer:TextField;
 		//enums
@@ -44,21 +45,35 @@ package maxine
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			// entry point
-			noteStrings = new Vector.<String>;
+			noteButtonStrings = new Vector.<String>;
 			noteButtons = new Vector.<textButton>;
+			noteStrings = new Vector.<String>;
 			
-			noteStrings.push("Root");
-			noteStrings.push("Minor Second");
-			noteStrings.push("Major Second");
-			noteStrings.push("Minor Third");
-			noteStrings.push("Perfect Fourth");
-			noteStrings.push("Tritone");
-			noteStrings.push("Perfect Fifth");
-			noteStrings.push("Minor Sixth");
-			noteStrings.push("Major Sixth");
-			noteStrings.push("Minor Seventh");
-			noteStrings.push("Major Seventh");
-			noteStrings.push("Octave");
+			noteButtonStrings.push("Root");
+			noteButtonStrings.push("Minor Second");
+			noteButtonStrings.push("Major Second");
+			noteButtonStrings.push("Minor Third");
+			noteButtonStrings.push("Perfect Fourth");
+			noteButtonStrings.push("Tritone");
+			noteButtonStrings.push("Perfect Fifth");
+			noteButtonStrings.push("Minor Sixth");
+			noteButtonStrings.push("Major Sixth");
+			noteButtonStrings.push("Minor Seventh");
+			noteButtonStrings.push("Major Seventh");
+			noteButtonStrings.push("Octave");
+			
+			noteStrings.push("c4");
+			noteStrings.push("c#4");
+			noteStrings.push("d4");
+			noteStrings.push("d#4");
+			noteStrings.push("e4");
+			noteStrings.push("f4");
+			noteStrings.push("f#4");
+			noteStrings.push("g4");
+			noteStrings.push("g#4");
+			noteStrings.push("a4");
+			noteStrings.push("a#4");
+			noteStrings.push("b4");
 			
 			
 			
@@ -66,7 +81,7 @@ package maxine
 			{
 				//trace(i);
 				var spacing:int = 90;
-				noteButtons.push(new textButton(noteStrings[i]));
+				noteButtons.push(new textButton(noteButtonStrings[i]));
 				
 				if (i < 4)
 				{
@@ -209,6 +224,7 @@ package maxine
 		private function playButton(buttonIndex:int):void
 		{
 			noteButtons[buttonIndex].alpha = 0.7;
+			sounds.play("["+ noteStrings[buttonIndex]+   "]",true);
 			expectedList.push(buttonIndex);
 		}
 		
