@@ -166,7 +166,9 @@ package maxine
 					}
 					case input:
 					{
+						
 						inputPattern();
+						blankAllButtons();
 						break;
 					}
 					default:
