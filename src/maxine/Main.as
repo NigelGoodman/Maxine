@@ -1,17 +1,17 @@
-package simone
+package maxine
 {
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.text.TextField;
-	import simone.textButton;
-	import org.si.sion.*;
+	import maxine.textButton;
+	//import org.si.sion.*;
 	
 	/**
 	 * ...
 	 * @author Jackpot
 	 */
-	[Frame(factoryClass = "simone.Preloader")]
+	[Frame(factoryClass = "maxine.Preloader")]
 	[SWF(width="480", height="320",  frameRate = 30, backgroundColor="#000033")]
 	public class Main extends Sprite 
 	{
@@ -25,7 +25,7 @@ package simone
 		private var startButton:textButton;
 		private var playRoot:Boolean = true;
 		private var expectedList:Vector.<int>;
-		public var driver:SiONDriver = new SiONDriver();
+		//public var driver:SiONDriver = new SiONDriver();
 		
 		private var announcer:TextField;
 		//enums

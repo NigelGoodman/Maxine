@@ -1,4 +1,4 @@
-package simone 
+package maxine 
 {
 	import flash.display.*;
 	import flash.display.SimpleButton;

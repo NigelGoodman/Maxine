@@ -1,4 +1,4 @@
-package simone
+package maxine
 {
 	import flash.display.DisplayObject;
 	import flash.display.MovieClip;
@@ -61,7 +61,7 @@ package simone
 		
 		private function startup():void 
 		{
-			var mainClass:Class = getDefinitionByName("simone.Main") as Class;
+			var mainClass:Class = getDefinitionByName("maxine.Main") as Class;
 			addChild(new mainClass() as DisplayObject);
 		}
 		
