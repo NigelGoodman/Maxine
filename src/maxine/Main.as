@@ -5,7 +5,7 @@ package maxine
 	import flash.events.MouseEvent;
 	import flash.text.TextField;
 	import maxine.textButton;
-	//import org.si.sion.*;
+	import org.si.sion.*;
 	
 	/**
 	 * ...
@@ -25,7 +25,7 @@ package maxine
 		private var startButton:textButton;
 		private var playRoot:Boolean = true;
 		private var expectedList:Vector.<int>;
-		//public var driver:SiONDriver = new SiONDriver();
+		public var driver:SiONDriver = new SiONDriver();
 		
 		private var announcer:TextField;
 		//enums

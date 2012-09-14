@@ -25,7 +25,9 @@
       <path-element>C:\Program Files\FlashDevelop\Library\AS3\classes</path-element>
     </source-path>
     <include-libraries />
-    <library-path append="true" />
+    <library-path append="true">
+      <path-element>C:\Documents and Settings\Deniz\My Documents\GitHub\Maxine\lib\sion065.swc</path-element>
+    </library-path>
   </compiler>
   <file-specs>
     <path-element>C:\Documents and Settings\Deniz\My Documents\GitHub\Maxine\src\maxine\Main.as</path-element>
