@@ -125,6 +125,7 @@ package maxine
 			
 			announcer.x = 0;
 			announcer.y = 0;
+			announcer.height = 35;
 			announcer.textColor = 0x00FF00;
 			announcer.text = "CLICK START";
 			announcer.visible = true;
@@ -202,6 +203,7 @@ package maxine
 		{		
 			if (mode == input && expectedList.length >0 )
 			{
+				noteButtons[noteButtons.indexOf(event.currentTarget)].alpha = 0.7;
 				playSound(noteButtons.indexOf(event.currentTarget));
 				if (expectedList[0] == noteButtons.indexOf(event.currentTarget))
 				{
