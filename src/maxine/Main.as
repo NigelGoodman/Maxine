@@ -199,9 +199,10 @@ package maxine
 		}
 		
 		private function clickedNote(event:Event):void
-		{
+		{		
 			if (mode == input && expectedList.length >0 )
 			{
+				playSound(noteButtons.indexOf(event.currentTarget));
 				if (expectedList[0] == noteButtons.indexOf(event.currentTarget))
 				{
 					announcer.text = "CORRECT!";
@@ -224,7 +225,7 @@ package maxine
 		private function playButton(buttonIndex:int):void
 		{
 			noteButtons[buttonIndex].alpha = 0.7;
-			sounds.play("["+ noteStrings[buttonIndex]+   "]",true);
+			playSound(buttonIndex);
 			expectedList.push(buttonIndex);
 		}
 		
@@ -234,6 +235,13 @@ package maxine
 			{
 				button.alpha = 0.3;
 			}
+		}
+		
+		private function playSound(soundIndex:int):void
+		{
+			sounds.autoStop = true
+
+			sounds.play(noteStrings[soundIndex]);	
 		}
 		
 		private function startClicked(event:Event):void
