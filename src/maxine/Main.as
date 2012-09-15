@@ -27,6 +27,8 @@ package maxine
 		private var playRoot:Boolean = true;
 		private var expectedList:Vector.<int>;
 		public var sounds:SiONDriver = new SiONDriver();
+		private const onAlpha:Number = 1.0;
+		private const offAlpha:Number = 0.7;
 		
 		private var announcer:TextField;
 		//enums
@@ -149,7 +151,7 @@ package maxine
 					{
 						for each (var button:textButton in noteButtons)
 						{
-							button.alpha = 0.3;
+							button.alpha = offAlpha;
 						}
 						break;
 					}
@@ -218,7 +220,7 @@ package maxine
 			}
 			if (mode == input && expectedList.length >0 )
 			{
-				noteButtons[noteButtons.indexOf(event.currentTarget)].alpha = 0.7;
+				noteButtons[noteButtons.indexOf(event.currentTarget)].alpha = onAlpha;
 				
 				if (expectedList[0] == noteButtons.indexOf(event.currentTarget))
 				{
@@ -241,7 +243,7 @@ package maxine
 		
 		private function playButton(buttonIndex:int):void
 		{
-			noteButtons[buttonIndex].alpha = 0.7;
+			noteButtons[buttonIndex].alpha = onAlpha;
 			playSound(buttonIndex);
 			expectedList.push(buttonIndex);
 		}
@@ -250,7 +252,7 @@ package maxine
 		{
 			for each (var button:textButton in noteButtons)
 			{
-				button.alpha = 0.3;
+				button.alpha = offAlpha;
 			}
 		}
 		

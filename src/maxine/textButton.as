@@ -30,9 +30,9 @@ package maxine
 			_shape = new Sprite();
 			_shape.addChild(_text);
 			
-			_shape.graphics.beginFill(0xFFFFFF);
+			_shape.graphics.beginFill(0x0000FF);
 			_shape.graphics.drawRect(0, 0, 75, 75);
-			_shape.alpha = 0.3
+			_shape.alpha = 0.7
 			_shape.visible = true;
 			//_text.visible = true;
 			
