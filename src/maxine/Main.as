@@ -157,6 +157,7 @@ package maxine
 					}
 					case example:
 					{
+						announcer.text = "Nice try. Watch the new pattern";
 						if (patternLength > 0)
 						{						
 							demonstratePattern();
@@ -270,16 +271,19 @@ package maxine
 				case off:
 				{
 					mode = example;
+					announcer.text = "Pay attention to the pattern";
 					break;
 				}
 				case example:
 				{
+					announcer.text = "Press start to begin";
 					mode = off;
 					patternLength = 4;
 					break;
 				}
 				case input:
 				{
+					announcer.text = "Press start to begin";
 					mode = off;
 					patternLength = 4;
 					break;
