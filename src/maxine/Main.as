@@ -54,6 +54,7 @@ package maxine
 			noteButtonStrings.push("Minor Second");
 			noteButtonStrings.push("Major Second");
 			noteButtonStrings.push("Minor Third");
+			noteButtonStrings.push("Major Third");
 			noteButtonStrings.push("Perfect Fourth");
 			noteButtonStrings.push("Tritone");
 			noteButtonStrings.push("Perfect Fifth");
@@ -61,7 +62,7 @@ package maxine
 			noteButtonStrings.push("Major Sixth");
 			noteButtonStrings.push("Minor Seventh");
 			noteButtonStrings.push("Major Seventh");
-			noteButtonStrings.push("Octave");
+			
 			
 			noteStrings.push("c4");
 			noteStrings.push("c#4");
@@ -220,12 +221,12 @@ package maxine
 				
 				if (expectedList[0] == noteButtons.indexOf(event.currentTarget))
 				{
-					announcer.text = "CORRECT!";
+					announcer.text = "CORRECT! " + expectedList.length + " notes left" ;
 					expectedList.shift();
 				}
 				else
 				{
-					announcer.text = "WRONG!";
+					announcer.text = "WRONG!" + expectedList.length + " notes left";
 					expectedList.shift();
 				}
 			}
