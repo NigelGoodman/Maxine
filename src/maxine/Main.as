@@ -128,6 +128,7 @@ package maxine
 			announcer.x = 0;
 			announcer.y = 0;
 			announcer.height = 35;
+			announcer.width = 480 - startButton.width;
 			announcer.textColor = 0x00FF00;
 			announcer.text = "CLICK START";
 			announcer.visible = true;
