@@ -64,7 +64,7 @@ package maxine
 			noteButtonStrings.push("Major Seventh");
 			
 			
-			noteStrings.push("c4");
+			noteStrings.push("c3");
 			noteStrings.push("c#4");
 			noteStrings.push("d4");
 			noteStrings.push("d#4");
