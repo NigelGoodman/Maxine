@@ -19,10 +19,9 @@ package maxine
 		private var noteStrings:Vector.<String>;
 		private var noteButtonStrings:Vector.<String>;
 		private var onButton:textButton;
-		private var mode:int = 0;
+		
 		private var ticker:int = 0;
-		private var tickerCheck:int = 10;
-		private var patternLength:int = 4;
+		
 		private var startButton:textButton;
 		private var playRoot:Boolean = true;
 		private var expectedList:Vector.<int>;
@@ -30,13 +29,12 @@ package maxine
 		private const onAlpha:Number = 1.0;
 		private const offAlpha:Number = 0.7;
 		
+		private var gameStates:gameVariables;
+		
 		private var announcer:TextField;
 		//enums
 		
-		private const off:int = 0;
-		private const example:int = 1;
-		private const input:int = 2;
-		private const wait:int = 3;
+		
 		
 		public function Main():void 
 		{
@@ -51,6 +49,9 @@ package maxine
 			noteButtonStrings = new Vector.<String>;
 			noteButtons = new Vector.<textButton>;
 			noteStrings = new Vector.<String>;
+			
+			gameStates = new gameVariables;
+			gameStates.initialise();
 			
 			noteButtonStrings.push("Root");
 			noteButtonStrings.push("Minor Second");
@@ -123,7 +124,7 @@ package maxine
 			
 			this.addChild(startButton);
 			
-			mode = off;
+			gameStates.mode = gameStates.off;
 			
 			announcer = new TextField();
 			
@@ -143,11 +144,11 @@ package maxine
 		private function onEnterFrame(event:Event):void
 		{
 			ticker++;
-			if (ticker > tickerCheck)
+			if (ticker > gameStates.tickerCheck)
 			{
-				switch (mode)
+				switch (gameStates.mode)
 				{
-					case off:
+					case gameStates.off:
 					{
 						for each (var button:textButton in noteButtons)
 						{
@@ -155,32 +156,32 @@ package maxine
 						}
 						break;
 					}
-					case example:
+					case gameStates.example:
 					{
 						announcer.text = "Nice try. Watch the new pattern";
-						if (patternLength > 0)
+						if (gameStates.patternLength > 0)
 						{						
 							demonstratePattern();
-							patternLength--;
+							gameStates.patternLength--;
 						}
 						else
 						{
 							blankAllButtons();
-							mode = input;
+							gameStates.mode = gameStates.input;
 						}
 						break;
 					}
-					case input:
+					case gameStates.input:
 					{
 						
 						inputPattern();
 						blankAllButtons();
 						break;
 					}
-					case wait:
+					case gameStates.wait:
 					{
 						
-						mode = example;
+						gameStates.mode = gameStates.example;
 						break;
 					}
 					default:
@@ -215,11 +216,11 @@ package maxine
 		
 		private function clickedNote(event:Event):void
 		{		
-			if (mode == input)
+			if (gameStates.mode == gameStates.input)
 			{
 				playSound(noteButtons.indexOf(event.currentTarget));
 			}
-			if (mode == input && expectedList.length >0 )
+			if (gameStates.mode == gameStates.input && expectedList.length >0 )
 			{
 				noteButtons[noteButtons.indexOf(event.currentTarget)].alpha = onAlpha;
 				
@@ -237,8 +238,8 @@ package maxine
 			
 			if (expectedList.length <= 0)
 			{
-				patternLength = 4;
-				mode = wait;
+				gameStates.patternLength = 4;
+				gameStates.mode = gameStates.wait;
 			}
 		}
 		
@@ -266,26 +267,26 @@ package maxine
 		
 		private function startClicked(event:Event):void
 		{
-			switch(mode)
+			switch(gameStates.mode)
 			{
-				case off:
+				case gameStates.off:
 				{
-					mode = example;
+					gameStates.mode = gameStates.example;
 					announcer.text = "Pay attention to the pattern";
 					break;
 				}
-				case example:
+				case gameStates.example:
 				{
 					announcer.text = "Press start to begin";
-					mode = off;
-					patternLength = 4;
+					gameStates.mode = gameStates.off;
+					gameStates.patternLength = 4;
 					break;
 				}
-				case input:
+				case gameStates.input:
 				{
 					announcer.text = "Press start to begin";
-					mode = off;
-					patternLength = 4;
+					gameStates.mode = gameStates.off;
+					gameStates.patternLength = 4;
 					break;
 				}
 				default:
